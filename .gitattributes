@@ -1,2 +1,2 @@
-src/test/* linguist-vendored
+src/test/groovy/* linguist-vendored
 *.groovy linguist-language=Groovy

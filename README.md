@@ -16,7 +16,7 @@ Simply run the following command from the main project directory:
 
 ## Test the end-point
 **End-point: `customer`**  
-List customers data processed (html): `curl http://localhost:8080/customer`  
+List customers data processed (json): `curl http://localhost:<port>/customer`  
 
 ## Tests
 ### Running
