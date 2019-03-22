@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: com.giri.validity
+---
+testFramework: junit
+sourceLanguage: java

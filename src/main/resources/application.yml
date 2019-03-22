@@ -1,0 +1,5 @@
+micronaut:
+    application:
+        name: validity-micronaut-java
+    server:
+        port: -1
