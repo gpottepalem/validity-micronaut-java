@@ -1,1 +1,2 @@
+src/test/* linguist-vendored
 *.groovy linguist-language=Groovy
