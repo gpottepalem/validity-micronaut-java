@@ -4,7 +4,7 @@
 This is a simple Micronaut microservice with one controller (`CustomerController`) with one action (`list`) 
 which loads a csv file with customer data, processes it and lists potential duplicates and non-duplicates found.
 
-This is the same Grails app https://github.com/gpottepalem/validity-springboot-web written in Java with Spring Boot for 
+This is the same Spring Boot app https://github.com/gpottepalem/validity-springboot-web written in Java with Spring Boot for 
 comparing efforts and learning curve.
 
 ## Installation
