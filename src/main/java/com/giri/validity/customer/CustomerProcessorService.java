@@ -4,6 +4,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.inject.Singleton;
 import java.io.*;
 import java.net.URISyntaxException;
@@ -21,8 +23,9 @@ import java.util.List;
 public class CustomerProcessorService {
     Algorithm algorithm;
 
-    CustomerProcessorService(Algorithm metaPhoneAlgorithm) {
-        algorithm = metaPhoneAlgorithm;
+    @Inject
+    CustomerProcessorService(@Named("metaPhone") Algorithm metaPhoneAlgorithm) {
+        this.algorithm = metaPhoneAlgorithm;
     }
 
     /**

@@ -1,9 +1,10 @@
-package com.giri.validity
+package com.giri.validity.customer
 
-import com.giri.validity.customer.Customer
-import com.giri.validity.customer.MetaPhoneAlgorithm
+import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Specification
 import spock.lang.Subject
+
+import javax.inject.Inject
 
 /**
  * Specification for {@link com.giri.validity.customer.MetaPhoneAlgorithm}
@@ -11,9 +12,11 @@ import spock.lang.Subject
  * @author gpottepalem
  * Created on Mar 21, 2019
  */
-class MetaPhoneAlgorithmSpec extends Specification{
-    @Subject
-    MetaPhoneAlgorithm algorithm = new MetaPhoneAlgorithm()
+@MicronautTest
+class MetaPhoneAlgorithmSpec extends Specification {
+
+    @Subject @Inject
+    MetaPhoneAlgorithm algorithm
 
     void "Customer with null properties results with null phonetic phrase"() {
         when:

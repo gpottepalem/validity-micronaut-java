@@ -23,13 +23,9 @@ public class CustomerController {
     }
 
     @Get("/")
-    public Map<String, List<Customer>> list() {
-        CustomerMatchResults results = null;
-        try {
-            results = customerProcessorService.processCustomerData("/normal.csv");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public Map<String, List<Customer>> list() throws Exception {
+        CustomerMatchResults results = customerProcessorService.processCustomerData("/normal.csv");
+
         Map<String, List<Customer>> customers = new HashMap<String, List<Customer>>();
         customers.put("potentialDuplicateCustomers", results.getPotentialDuplicateCustomers());
         customers.put("nonDuplicateCustomers", results.getNonDuplicates());

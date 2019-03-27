@@ -1,11 +1,11 @@
-package com.giri.validity
+package com.giri.validity.customer
 
-import com.giri.validity.customer.CustomerMatchResults
-import com.giri.validity.customer.CustomerProcessorService
-import com.giri.validity.customer.MetaPhoneAlgorithm
+import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Specification
 import spock.lang.Subject
 import spock.lang.Unroll
+
+import javax.inject.Inject
 
 /**
  * Specification for {@link com.giri.validity.customer.CustomerProcessorService}.
@@ -16,15 +16,16 @@ import spock.lang.Unroll
  * @author gpottepalem
  * Created on Mar 21, 2019
  */
+@MicronautTest
 class CustomerProcessorServiceSpec extends Specification {
 
-    @Subject
-    CustomerProcessorService service = new CustomerProcessorService(new MetaPhoneAlgorithm())
+    @Subject @Inject
+    CustomerProcessorService customerProcessorService
 
     @Unroll
     void "Existing customer data file:#testFile contains #expectedRecords records"() {
         expect:
-        service.loadCustomers(testFile).size() == expectedRecords
+        customerProcessorService.loadCustomers(testFile).size() == expectedRecords
 
         where:
         testFile        || expectedRecords
@@ -34,7 +35,7 @@ class CustomerProcessorServiceSpec extends Specification {
 
     void "When customer data file is processed, results get populated with data"() {
         when: 'customer data file is processed'
-        CustomerMatchResults results = service.processCustomerData('/normal.csv')
+        CustomerMatchResults results = customerProcessorService.processCustomerData('/normal.csv')
 
         then: 'no exception occurs'
         noExceptionThrown()
@@ -45,7 +46,7 @@ class CustomerProcessorServiceSpec extends Specification {
 
     void "Non-existing customer data file should result in no customers in the result"() {
         when: 'non existing file is taken for processing'
-        CustomerMatchResults results = service.processCustomerData('/not-found.csv')
+        CustomerMatchResults results = customerProcessorService.processCustomerData('/not-found.csv')
 
         then: 'no exception occurs'
         noExceptionThrown()

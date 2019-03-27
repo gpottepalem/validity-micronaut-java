@@ -1,25 +1,24 @@
 package com.giri.validity.customer
 
 import groovy.json.JsonSlurper
-import io.micronaut.context.ApplicationContext
 import io.micronaut.http.client.HttpClient
-import io.micronaut.runtime.server.EmbeddedServer
-import spock.lang.AutoCleanup
-import spock.lang.Shared
+import io.micronaut.http.client.annotation.Client
+import io.micronaut.test.annotation.MicronautTest
 import spock.lang.Specification
+
+import javax.inject.Inject
 
 /**
  * Specification for {@link CustomerController}
  *
  * @author gpottepalem
- * Created on Mar 21, 2019
+ * Created on Mar 26, 2019
  */
-class CustomerControllerSpec extends Specification {
+@MicronautTest
+class CustomerControllerMicronautTestSpec extends Specification {
+    @Inject @Client('/') HttpClient httpClient
 
-    @Shared @AutoCleanup EmbeddedServer embeddedServer = ApplicationContext.run(EmbeddedServer)
-    @Shared @AutoCleanup HttpClient httpClient = HttpClient.create(embeddedServer.URL)
-
-    void "test customer endpoint response"() {
+    void "test customer endpoint response using Micronaut test"() {
         when:
         def jsonResponse = httpClient.toBlocking().retrieve('/customer')
         Map response = new JsonSlurper().parseText(jsonResponse)
