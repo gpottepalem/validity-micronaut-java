@@ -21,6 +21,7 @@ import java.util.List;
  */
 @Singleton
 public class CustomerProcessorService {
+
     Algorithm algorithm;
 
     @Inject

@@ -17,7 +17,12 @@ import java.util.Map;
 @Singleton
 public class MetaPhoneAlgorithm implements Algorithm {
 
-    @Inject private Metaphone metaphone;
+    private Metaphone metaphone;
+
+    @Inject
+    MetaPhoneAlgorithm(Metaphone metaphone) {
+        this.metaphone = metaphone;
+    }
 
     @Override
     public String computePhoneticPhrase(Customer customer) {

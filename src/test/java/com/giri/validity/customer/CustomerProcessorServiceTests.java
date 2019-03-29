@@ -3,6 +3,7 @@ package com.giri.validity.customer;
 import com.giri.validity.customer.CustomerMatchResults;
 import com.giri.validity.customer.CustomerProcessorService;
 import com.giri.validity.customer.MetaPhoneAlgorithm;
+import org.apache.commons.codec.language.Metaphone;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,7 +17,7 @@ import static org.junit.Assert.assertThat;
  */
 public class CustomerProcessorServiceTests {
 
-    private CustomerProcessorService service = new CustomerProcessorService(new MetaPhoneAlgorithm());
+    private CustomerProcessorService service = new CustomerProcessorService(new MetaPhoneAlgorithm(new Metaphone()));
 
     @Test
     public void normalDataFileLoadedShouldHaveExpectedNumberOfCustomers() {
