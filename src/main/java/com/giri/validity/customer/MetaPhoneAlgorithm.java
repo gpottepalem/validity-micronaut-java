@@ -2,6 +2,7 @@ package com.giri.validity.customer;
 
 import org.apache.commons.codec.language.Metaphone;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,8 @@ import java.util.Map;
  */
 @Singleton
 public class MetaPhoneAlgorithm implements Algorithm {
-    final static int MAX_CODEC_LENGTH = 4;
-    final static Metaphone metaphone = new Metaphone();
-    static {
-        metaphone.setMaxCodeLen(MAX_CODEC_LENGTH);
-    }
+
+    @Inject private Metaphone metaphone;
 
     @Override
     public String computePhoneticPhrase(Customer customer) {
